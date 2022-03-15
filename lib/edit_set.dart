@@ -1,24 +1,7 @@
 import 'package:fit_buddy/existing_set.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'FitBuddy',
-      theme: ThemeData(
-        primarySwatch: Colors.red,
-      ),
-      home: const EditSet(title: 'Edit Set'),
-    );
-  }
-}
+import 'new_set.dart';
 
 class EditSet extends StatefulWidget {
   const EditSet({Key? key, required this.title}) : super(key: key);
@@ -49,7 +32,7 @@ class _EditSetState extends State<EditSet> {
               onPressed: () {
                 //todo code
               },
-              child: const Text('Name of set'),
+              child: const Text('Name of exercise'),
             ),
             ElevatedButton(
               style: style,
@@ -79,7 +62,7 @@ class _EditSetState extends State<EditSet> {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const ExistingSets(title: 'Existing Set')),
+            MaterialPageRoute(builder: (context) => const NewSet(title: 'New Routine')),
           );
         },
         child: const Text('Finish')

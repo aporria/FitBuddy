@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: const SplashPage(title: 'Splash'),
+      home: const SplashPage(title: ''),
     );
   }
 }
@@ -44,9 +44,14 @@ class _SplashPageState extends State<SplashPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
+            const Text(
               'FitBuddy',
-              style: Theme.of(context).textTheme.headline4,
+              style: TextStyle(
+                fontSize: 48,
+                fontStyle: FontStyle.italic,
+                fontWeight: FontWeight.bold,
+                color: Colors.red,
+              ),
             ),
             ElevatedButton(
                 style: style,
