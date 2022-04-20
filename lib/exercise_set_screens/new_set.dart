@@ -1,4 +1,4 @@
-import 'package:fit_buddy/edit_set.dart';
+import 'package:fit_buddy/exercise_set_screens/edit_set.dart';
 import 'package:flutter/material.dart';
 
 class NewSet extends StatefulWidget {

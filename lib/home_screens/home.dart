@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import '../new_set.dart';
-import '../existing_set.dart';
+import '../exercise_set_screens/new_set.dart';
+import '../exercise_set_screens/existing_set.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -18,10 +16,6 @@ class _HomePageState extends State<HomePage> {
     ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
 
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(widget.title),
-      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

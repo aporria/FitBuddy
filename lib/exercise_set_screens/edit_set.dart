@@ -1,4 +1,4 @@
-import 'package:fit_buddy/existing_set.dart';
+import 'package:fit_buddy/exercise_set_screens/existing_set.dart';
 import 'package:flutter/material.dart';
 
 import 'new_set.dart';
