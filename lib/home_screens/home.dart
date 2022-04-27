@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../exercise_set_screens/new_set.dart';
+import '../exercise_set_screens/new_routine_page.dart';
 import '../exercise_set_screens/existing_set.dart';
 
 class HomePage extends StatefulWidget {
@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const NewSet(title: 'New Routine',)),
+                    MaterialPageRoute(builder: (context) => const NewRoutine()),
                   );
                 },
                 child: const Text(

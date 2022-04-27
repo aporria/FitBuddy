@@ -49,11 +49,11 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyBAnsDXHGhcGhWEiYsTJnuVZ5ueBAG6chI',
-    appId: '1:403060210002:ios:7b0870826ce7e6d909628b',
+    appId: '1:403060210002:ios:786af3b24f938f7b09628b',
     messagingSenderId: '403060210002',
     projectId: 'fitbuddy-c4ede',
     storageBucket: 'fitbuddy-c4ede.appspot.com',
-    iosClientId: '403060210002-fdpsb7b0aobi2g2k8pbg1fdmk413hv2f.apps.googleusercontent.com',
-    iosBundleId: 'com.fitbuddy.app',
+    iosClientId: '403060210002-iho830loa2h739tgmjsoaga7htods6va.apps.googleusercontent.com',
+    iosBundleId: 'com.example.fitBuddy',
   );
 }

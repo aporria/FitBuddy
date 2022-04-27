@@ -29,6 +29,13 @@
             {
               "client_id": "403060210002-o77bmas095sjtvu3tsci5utt67hak1jg.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "403060210002-fdpsb7b0aobi2g2k8pbg1fdmk413hv2f.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.fitbuddy.app"
+              }
             }
           ]
         }

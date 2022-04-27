@@ -2,6 +2,7 @@ import 'package:fit_buddy/home_screens/login.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fit_buddy/firebase_options.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'home.dart';
 
 void main() async {
@@ -20,7 +21,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.deepPurple,
+        textTheme: GoogleFonts.nunitoSansTextTheme(
+          Theme.of(context).textTheme,
+        )
       ),
       home: const SplashPage(title: 'FitBuddy'),
     );
@@ -53,7 +57,7 @@ class _SplashPageState extends State<SplashPage> {
                 fontSize: 48,
                 fontStyle: FontStyle.italic,
                 fontWeight: FontWeight.bold,
-                color: Colors.red,
+                color: Colors.deepPurple,
               ),
             ),
             ElevatedButton(
