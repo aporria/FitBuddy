@@ -1,4 +1,4 @@
-import 'package:fit_buddy/home_screens/login.dart';
+import 'package:fit_buddy/authentication_screens/login.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fit_buddy/firebase_options.dart';
@@ -65,7 +65,9 @@ class _SplashPageState extends State<SplashPage> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const LoginPage()),
+                    MaterialPageRoute(
+                      settings: const RouteSettings(name: '/login'),
+                      builder: (context) => const LoginPage()),
                   );
                 },
                 child: const Text('Start'),

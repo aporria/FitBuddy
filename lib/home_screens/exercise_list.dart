@@ -1,11 +1,13 @@
 import 'dart:convert';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:fit_buddy/exercise_set_screens/add_new_routine.dart';
 import 'package:fit_buddy/exercise_set_screens/routine_details.dart';
 import 'package:flutter/material.dart';
 
 import '../exercise_set_screens/add_new_exercise.dart';
+import '../options_screens/options_page.dart';
 
 class ExerciseList extends StatefulWidget {
   const ExerciseList({Key? key}) : super(key: key);
@@ -17,27 +19,32 @@ class ExerciseList extends StatefulWidget {
 class _ExerciseListState extends State<ExerciseList> {
 
   var exerciseList = [];
+  var currentUser = FirebaseAuth.instance.currentUser;
+  var userID = FirebaseAuth.instance.currentUser?.uid;
 
   _ExerciseListState() {
     refreshExerciseList();
-    FirebaseDatabase.instance.ref().child('exercises').onChildChanged.listen((event) {
+    FirebaseDatabase.instance.ref().child(userID.toString() + '/exercise_list').onChildChanged.listen((event) {
       print('Data changed.');
       refreshExerciseList();
     });
-    FirebaseDatabase.instance.ref().child('exercises').onChildRemoved.listen((event) {
+    FirebaseDatabase.instance.ref().child(userID.toString() + '/exercise_list').onChildRemoved.listen((event) {
       print('Data changed.');
       refreshExerciseList();
     });
-    FirebaseDatabase.instance.ref().child('exercises').onChildAdded.listen((event) {
+    FirebaseDatabase.instance.ref().child(userID.toString() + '/exercise_list').onChildAdded.listen((event) {
       print('Data changed.');
       refreshExerciseList();
     });
   }
 
   void refreshExerciseList() {
-    FirebaseDatabase.instance.ref().child('exercises').once()
+    FirebaseDatabase.instance.ref().child(userID.toString() + '/exercise_list').once()
       .then((datasnapshot) {
         print('Successfully loaded the data!');
+        if (currentUser != null) {
+          print(currentUser?.uid);
+        }
         print(datasnapshot);
         print('Key: ' + datasnapshot.snapshot.key.toString());
         print(datasnapshot.snapshot.key);
@@ -70,6 +77,18 @@ class _ExerciseListState extends State<ExerciseList> {
       appBar: AppBar(
         centerTitle: true,
         title: const Text('FitBuddy'),
+        automaticallyImplyLeading: false,
+        actions: <Widget>[
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const OptionsPage()),
+              );
+            },
+            icon: const Icon(Icons.more_vert_rounded),
+          ),
+        ],
       ),
       backgroundColor: const Color(0xFFF6F6F6),
       body: Column(
@@ -163,7 +182,7 @@ class _ExerciseListState extends State<ExerciseList> {
                             ),
                           ],
                         ),
-                        Spacer(),
+                        const Spacer(),
                         Text(
                             '${exerciseList[index]['category']}',
                           style: const TextStyle(

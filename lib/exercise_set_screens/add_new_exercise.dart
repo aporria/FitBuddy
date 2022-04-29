@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
@@ -14,6 +15,9 @@ class _AddNewExerciseState extends State<AddNewExercise> {
   var numberOfSetsController = TextEditingController();
   var categoryController = TextEditingController();
   var numberOfRepsController = TextEditingController();
+
+  var currentUser = FirebaseAuth.instance.currentUser;
+  var userID = FirebaseAuth.instance.currentUser?.uid;
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +76,7 @@ class _AddNewExerciseState extends State<AddNewExercise> {
           print(numberOfRepsController.text);
 
           var timeStamp = DateTime.now().millisecondsSinceEpoch;
-          FirebaseDatabase.instance.ref().child('exercises/exercise' + timeStamp.toString()).set(
+          FirebaseDatabase.instance.ref().child(userID.toString() + '/exercise_list/exercise' + timeStamp.toString()).set(
             {
               "name" : nameController.text,
               "category" : categoryController.text,

@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fit_buddy/authentication_screens/forgot_password_page.dart';
 import 'package:fit_buddy/home_screens/exercise_list.dart';
-import 'package:fit_buddy/home_screens/home.dart';
-import 'package:fit_buddy/home_screens/signup.dart';
+import 'package:fit_buddy/authentication_screens/signup.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -68,23 +68,40 @@ class _LoginPageState extends State<LoginPage> {
                           )
                       )
                   ),
-                  child: const Text(
-                    'Log in',
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: const [
+                      Text('Log in'), // <-- Text
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Icon( // <-- Icon
+                        Icons.login_rounded,
+                        size: 24.0,
+                      ),
+                    ],
                   ),
                   onPressed: () {
-                    FirebaseAuth.instance.signInWithEmailAndPassword(
-                        email: emailController.text, password: passwordController.text)
-                        .then((value) {
-                          print('Login successful!');
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => const ExerciseList()),
-                          );
-                    }).catchError((error) {
-                      print('Login unsuccessful.');
-                      print(error.toString());
-                    });
+                    login();
                   },
+                ),
+              ),
+              GestureDetector(
+                child: SizedBox(
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const ForgotPasswordPage()),
+                      );
+                    },
+                    child: const Text(
+                      'Forgot password?',
+                      style: TextStyle(
+                        color: Colors.deepPurple,
+                      ),
+                    ),
+                  ),
                 ),
               ),
               Row(
@@ -102,7 +119,8 @@ class _LoginPageState extends State<LoginPage> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const SignupPage()),
+                          MaterialPageRoute(
+                              builder: (context) => const SignupPage()),
                         );
                       },
                     ),
@@ -114,5 +132,35 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+  }
+  Future login() async {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailController.text.trim(), password: passwordController.text.trim());
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+              'Login successful!'
+          ),
+        ),
+      );
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const ExerciseList()),
+      );
+      print('Login successful!');
+    } on FirebaseAuthException catch (e) {
+      print(e);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+              e.message.toString()
+          ),
+        ),
+      );
+      Navigator.of(context).popUntil(
+          ModalRoute.withName('/login')
+      );
+    }
   }
 }
