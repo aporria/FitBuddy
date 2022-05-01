@@ -28,8 +28,11 @@ class _ExerciseListState extends State<ExerciseList> {
       print('Data changed.');
       refreshExerciseList();
     });
-    FirebaseDatabase.instance.ref().child(userID.toString() + '/exercise_list').onChildRemoved.listen((event) {
+    FirebaseDatabase.instance.ref().child(userID.toString()).onChildRemoved.listen((event) {
       print('Data changed.');
+      setState(() {
+        exerciseList.clear();
+      });
       refreshExerciseList();
     });
     FirebaseDatabase.instance.ref().child(userID.toString() + '/exercise_list').onChildAdded.listen((event) {
@@ -45,7 +48,6 @@ class _ExerciseListState extends State<ExerciseList> {
         if (currentUser != null) {
           print(currentUser?.uid);
         }
-        print(datasnapshot);
         print('Key: ' + datasnapshot.snapshot.key.toString());
         print(datasnapshot.snapshot.key);
         print("Value: " + datasnapshot.snapshot.value.toString());
@@ -152,42 +154,44 @@ class _ExerciseListState extends State<ExerciseList> {
                         borderRadius: BorderRadius.circular(20.0)
                     ),
                     child: Row(
+                      mainAxisSize: MainAxisSize.min,
                       children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              '${exerciseList[index]['name']}',
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 25,
+                        Flexible(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                '${exerciseList[index]['name']}',
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 25,
+                                ),
                               ),
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                    '${exerciseList[index]['numSets']} sets • ',
-                                  style: const TextStyle(
-                                    fontSize: 18,
+                              Row(
+                                children: [
+                                  Text(
+                                      '${exerciseList[index]['numSets']} sets • ',
+                                    style: const TextStyle(
+                                      fontSize: 18,
+                                    ),
                                   ),
-                                ),
-                                Text(
-                                    '${exerciseList[index]['numReps']} reps',
-                                  style: const TextStyle(
-                                    fontSize: 18,
+                                  Text(
+                                      '${exerciseList[index]['numReps']} reps',
+                                    style: const TextStyle(
+                                      fontSize: 18,
+                                    ),
                                   ),
-                                ),
-                              ],
-                            ),
-                          ],
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
-                        const Spacer(),
                         Text(
                             '${exerciseList[index]['category']}',
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 20,
+                            fontSize: 25,
                           ),
                         ),
                       ]

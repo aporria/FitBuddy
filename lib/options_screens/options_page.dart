@@ -30,7 +30,8 @@ class _OptionsPageState extends State<OptionsPage> {
               width: 300,
               child: ElevatedButton(
                 onPressed: () {
-                  clearEntries(context);
+                  clearEntries();
+                  //Navigator.pop(context);
                 },
                 child: const Text(
                   'Clear All Entries',
@@ -61,7 +62,7 @@ class _OptionsPageState extends State<OptionsPage> {
     );
   }
 
-  Future<void> clearEntries(BuildContext context) async {
+  Future clearEntries() async {
     showDialog(
         context: context,
         barrierDismissible: false,
@@ -70,22 +71,25 @@ class _OptionsPageState extends State<OptionsPage> {
         )
     );
     try {
-      await FirebaseDatabase.instance.ref().child(userID.toString() + '/exercise_list').remove()
+      await FirebaseDatabase.instance.ref().child(userID.toString() + '/exercise_list').set(null)
           .then((datasnapshot) {
-
-          }
-      );
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text(
-              'All entries cleared'
-          ),
-        ),
-      );
-      Navigator.of(context).pop();
-      setState(() {
-
-      });
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text(
+                    'All entries cleared'
+                ),
+              ),
+            );
+          }).catchError((error) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text(
+                    'Failed to clear entries'
+                ),
+              ),
+            );
+          });
+      Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
       print(e);
       ScaffoldMessenger.of(context).showSnackBar(
