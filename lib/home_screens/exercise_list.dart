@@ -1,12 +1,8 @@
 import 'dart:convert';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:fit_buddy/exercise_set_screens/userprofile.dart';
 import 'package:flutter/material.dart';
-
 import '../exercise_set_screens/add_new_exercise.dart';
-import '../options_screens/settings.dart';
 
 class ExerciseList extends StatefulWidget {
   const ExerciseList({Key? key}) : super(key: key);

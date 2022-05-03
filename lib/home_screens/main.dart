@@ -63,25 +63,29 @@ class _SplashPageState extends State<SplashPage> {
                 color: Colors.deepPurple,
               ),
             ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                //minimumSize: const Size.fromHeight(40),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(14),
+            SizedBox(
+              height: 50,
+              width: 100,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  //minimumSize: const Size.fromHeight(40),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(14),
+                  ),
                 ),
-              ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    settings: const RouteSettings(name: '/login'),
-                    builder: (context) => const LoginPage()),
-                );
-              },
-              child: const Text(
-                  'Start',
-                style: TextStyle(
-                  fontSize: 20
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      settings: const RouteSettings(name: '/login'),
+                      builder: (context) => const LoginPage()),
+                  );
+                },
+                child: const Text(
+                    'Start',
+                  style: TextStyle(
+                    fontSize: 20
+                  ),
                 ),
               ),
             ),

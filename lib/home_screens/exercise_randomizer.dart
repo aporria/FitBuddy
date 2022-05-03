@@ -12,41 +12,62 @@ class _RandomizerState extends State<Randomizer> {
   var exercise = '';
   final _random = Random();
 
-  final upperBodyExercises = [
+  final chestExercises = [
     'Flat bench press',
     'Incline bench press',
     'Decline bench press',
     'Chest fly',
     'Pushup',
-    'Pulldown',
+    'Cable crossovers',
+    'Vertical dips',
+    'Cable fly'
+  ];
+
+  final backExercises = [
+    'Lat pulldown',
     'Pullup',
     'Chinup',
-    'Cable crossovers',
-    'Dips',
     'Bent-over row',
-    'Upright row',
+    'Rows',
+    'Deadlift',
+  ];
+
+  final shoulderExercises = [
     'Shoulder press',
     'Military press',
     'Lateral raise',
-    'Pushdown',
-    'Tricep extension',
-    'Preacher curl',
-    'Barbell curl'
+    'Front raise'
   ];
-  final lowerBodyExercises = [
+
+  final legExercises = [
     'Squat',
     'Front squat',
     'Leg press',
     'Leg extension',
     'Wall sit',
-    'Deadlift',
     'Stiff-legged deadlift',
     'Leg curl',
-    'Snatch',
     'Standing calf raise',
     'Seated calf raise',
     'Hip adductor'
   ];
+
+  final bicepExercises = [
+    'Barbell curl',
+    'Preacher curl',
+    'Dumbell curl',
+    'Hammer curl',
+    'Alternating curl'
+  ];
+
+  final tricepExercises = [
+    'Pushdown',
+    'Dips',
+    'Tricep extension',
+    'Diamond pushups',
+    'Close-grip bench press'
+  ];
+
   final waistExercises = [
     'Crunches',
     'Leg raise',
@@ -105,59 +126,190 @@ class _RandomizerState extends State<Randomizer> {
                 ],
               ),
             ),
-            Container(
-              margin: const EdgeInsets.only(left: 35, right: 35, top: 10),
-              width: 200,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  minimumSize: const Size.fromHeight(45),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(14),
-                  ),
-                ),
-                onPressed: () {
-                  exercise = upperBodyExercises[_random.nextInt(upperBodyExercises.length)];
-                  setState(() {
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(left: 30, top: 10),
+                  height: 75,
+                  width: 150,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: const Size.fromHeight(45),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                    ),
+                    onPressed: () {
+                      exercise = chestExercises[_random.nextInt(chestExercises.length)];
+                      setState(() {
 
-                  });
-                },
-                child: const Text(
-                  'Upper Body',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
+                      });
+                    },
+                    child: const Text(
+                      'Chest',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
                   ),
                 ),
-              ),
+                const SizedBox(
+                  width: 20,
+                ),
+                Container(
+                  margin: const EdgeInsets.only(right: 30, top: 10),
+                  height: 75,
+                  width: 150,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: const Size.fromHeight(45),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                    ),
+                    onPressed: () {
+                      exercise = legExercises[_random.nextInt(legExercises.length)];
+                      setState(() {
+
+                      });
+                    },
+                    child: const Text(
+                      'Legs',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(left: 30, top: 20),
+                  height: 75,
+                  width: 150,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: const Size.fromHeight(45),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                    ),
+                    onPressed: () {
+                      exercise = shoulderExercises[_random.nextInt(shoulderExercises.length)];
+                      setState(() {
+
+                      });
+                    },
+                    child: const Text(
+                      'Shoulders',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 20,
+                ),
+                Container(
+                  margin: const EdgeInsets.only(right: 30, top: 20),
+                  height: 75,
+                  width: 150,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: const Size.fromHeight(45),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                    ),
+                    onPressed: () {
+                      exercise = backExercises[_random.nextInt(backExercises.length)];
+                      setState(() {
+
+                      });
+                    },
+                    child: const Text(
+                      'Back',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(left: 30, top: 20),
+                  height: 75,
+                  width: 150,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: const Size.fromHeight(45),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                    ),
+                    onPressed: () {
+                      exercise = bicepExercises[_random.nextInt(bicepExercises.length)];
+                      setState(() {
+
+                      });
+                    },
+                    child: const Text(
+                      'Biceps',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 20,
+                ),
+                Container(
+                  margin: const EdgeInsets.only(right: 30, top: 20),
+                  height: 75,
+                  width: 150,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: const Size.fromHeight(45),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                    ),
+                    onPressed: () {
+                      exercise = tricepExercises[_random.nextInt(tricepExercises.length)];
+                      setState(() {
+
+                      });
+                    },
+                    child: const Text(
+                      'Triceps',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
             Container(
-              margin: const EdgeInsets.only(left: 35, right: 35, top: 20),
-              width: 200,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  minimumSize: const Size.fromHeight(45),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(14),
-                  ),
-                ),
-                onPressed: () {
-                  exercise = lowerBodyExercises[_random.nextInt(lowerBodyExercises.length)];
-                  setState(() {
-
-                  });
-                },
-                child: const Text(
-                  'Lower Body',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.only(left: 35, right: 35, top: 20),
-              width: 200,
+              margin: const EdgeInsets.only(top: 20),
+              height: 75,
+              width: 150,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   minimumSize: const Size.fromHeight(45),

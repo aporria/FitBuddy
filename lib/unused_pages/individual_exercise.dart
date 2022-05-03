@@ -1,7 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fit_buddy/exercise_set_screens/userprofile.dart';
 import 'package:flutter/material.dart';
-import 'add_new_exercise.dart' as addnew;
 
 class IndividualExerciseScreen extends StatefulWidget {
   const IndividualExerciseScreen({Key? key}) : super(key: key);
