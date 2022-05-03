@@ -20,69 +20,67 @@ class _SignupPageState extends State<SignupPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Sign Up'),
+        centerTitle: true,
       ),
-      body: SingleChildScrollView(
-        child: ConstrainedBox(
-          constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                margin: const EdgeInsets.only(top: 20, bottom: 20),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              margin: const EdgeInsets.only(top: 20, bottom: 20),
+              child: const Text(
+                'Sign up to FitBuddy',
+                style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold
+                ),
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(left: 35, right: 35, bottom: 10, top: 10),
+              child: TextField(
+                controller: emailController,
+                obscureText: false,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(14),
+                  ),
+                  labelText: 'Email',
+                ),
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(left: 35, right: 35, bottom: 10, top: 10),
+              child: TextField(
+                controller: passwordController,
+                obscureText: true,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(14),
+                  ),
+                  labelText: 'Password',
+                ),
+              ),
+            ),
+            SizedBox(
+              width: 325,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  minimumSize: const Size.fromHeight(40),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(14),
+                  ),
+                ),
                 child: const Text(
-                  'Sign up to FitBuddy',
-                  style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold
-                  ),
+                  'Confirm',
                 ),
+                onPressed: () {
+                  signUp();
+                },
               ),
-              Container(
-                margin: const EdgeInsets.only(left: 35, right: 35, bottom: 10, top: 10),
-                child: TextField(
-                  controller: emailController,
-                  obscureText: false,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(14),
-                    ),
-                    labelText: 'Email',
-                  ),
-                ),
-              ),
-              Container(
-                margin: const EdgeInsets.only(left: 35, right: 35, bottom: 10, top: 10),
-                child: TextField(
-                  controller: passwordController,
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(14),
-                    ),
-                    labelText: 'Password',
-                  ),
-                ),
-              ),
-              SizedBox(
-                width: 325,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: const Size.fromHeight(40),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(14),
-                    ),
-                  ),
-                  child: const Text(
-                    'Confirm',
-                  ),
-                  onPressed: () {
-                    signUp();
-                  },
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

@@ -1,0 +1,42 @@
+Lower Body:
+'Squat',
+'Front squat',
+'Leg press',
+'Leg extension',
+'Wall sit',
+'Deadlift',
+'Stiff-legged deadlift',
+'Leg curl',
+'Snatch',
+'Standing calf raise',
+'Seated calf raise',
+'Hip adductor'
+
+Upper Body:
+'Flat bench press',
+'Incline bench press',
+'Decline bench press',
+'Chest fly',
+'Pushup',
+'Pulldown',
+'Pullup',
+'Chinup',
+'Cable crossovers',
+'Dips',
+'Bent-over row',
+'Upright row',
+'Shoulder press',
+'Military press',
+'Lateral raise',
+'Pushdown',
+'Tricep extension',
+'Preacher curl',
+'Barbell curl'
+
+Waist:
+'Crunches',
+'Leg raise',
+'Russian twists',
+'Planks',
+'Mountain climbers',
+'Reverse crunches',

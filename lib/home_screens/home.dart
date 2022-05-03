@@ -1,7 +1,7 @@
-import 'package:fit_buddy/home_screens/routine_randomizer.dart';
+import 'package:fit_buddy/home_screens/exercise_randomizer.dart';
 import 'package:flutter/material.dart';
 
-import '../options_screens/exercise_list_options.dart';
+import '../options_screens/settings.dart';
 import '../timer_screen/timer.dart';
 import 'exercise_list.dart';
 
@@ -33,7 +33,10 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screens[_selectedIndex],
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: screens,
+      ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(

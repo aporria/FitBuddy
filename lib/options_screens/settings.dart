@@ -58,12 +58,24 @@ class _SettingsPageState extends State<SettingsPage> {
                     ],
                   ),
                 ),
-                child: const Text(
-                  'Clear All Entries',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                  ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: const [
+                    Text(
+                      'Clear All Entries',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Icon( // <-- Icon
+                      Icons.clear_all_rounded,
+                      size: 24.0,
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -96,11 +108,24 @@ class _SettingsPageState extends State<SettingsPage> {
                     ],
                   ),
                 ),
-                child: const Text(
-                    'Sign Out',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold
-                  ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: const [
+                    Text(
+                      'Sign Out',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Icon( // <-- Icon
+                      Icons.logout_rounded,
+                      size: 24.0,
+                    ),
+                  ],
                 ),
               ),
             ),

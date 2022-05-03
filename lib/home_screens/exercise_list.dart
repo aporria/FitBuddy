@@ -6,7 +6,7 @@ import 'package:fit_buddy/exercise_set_screens/userprofile.dart';
 import 'package:flutter/material.dart';
 
 import '../exercise_set_screens/add_new_exercise.dart';
-import '../options_screens/exercise_list_options.dart';
+import '../options_screens/settings.dart';
 
 class ExerciseList extends StatefulWidget {
   const ExerciseList({Key? key}) : super(key: key);
@@ -99,7 +99,6 @@ class _ExerciseListState extends State<ExerciseList> {
                 Text(
                   "Hello!",
                   style: TextStyle(
-                    color: Color(0xFF211551),
                     fontSize: 30.0,
                     fontWeight: FontWeight.bold,
                   ),
@@ -114,7 +113,6 @@ class _ExerciseListState extends State<ExerciseList> {
                         " choose an exercise at random with the randomizer!",
                     style: TextStyle(
                         fontSize: 16.0,
-                        color: Color(0xFF86829D),
                         height: 1.5
                     ),
                   ),
