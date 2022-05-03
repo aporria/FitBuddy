@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fit_buddy/authentication_screens/forgot_password_page.dart';
 import 'package:fit_buddy/home_screens/exercise_list.dart';
 import 'package:fit_buddy/authentication_screens/signup.dart';
+import 'package:fit_buddy/home_screens/home.dart';
+import 'package:fit_buddy/home_screens/main_menu.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -41,8 +43,10 @@ class _LoginPageState extends State<LoginPage> {
                 child: TextField(
                   controller: emailController,
                   obscureText: false,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(14),
+                    ),
                     labelText: 'Email',
                   ),
                 ),
@@ -52,21 +56,22 @@ class _LoginPageState extends State<LoginPage> {
                 child: TextField(
                   controller: passwordController,
                   obscureText: true,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(14),
+                    ),
                     labelText: 'Password',
                   ),
                 ),
               ),
-              SizedBox(
-                width: 325,
+              Container(
+                margin: const EdgeInsets.only(left: 35, right: 35),
                 child: ElevatedButton(
-                  style: ButtonStyle(
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18),
-                          )
-                      )
+                  style: ElevatedButton.styleFrom(
+                      minimumSize: const Size.fromHeight(40),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(14),
+                      ),
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -115,6 +120,9 @@ class _LoginPageState extends State<LoginPage> {
                     child: TextButton(
                       child: const Text(
                         'Sign up.',
+                        style: TextStyle(
+                          color: Colors.deepPurple,
+                        ),
                       ),
                       onPressed: () {
                         Navigator.push(
@@ -144,9 +152,11 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
       );
+      emailController.text = '';
+      passwordController.text = '';
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const ExerciseList()),
+        MaterialPageRoute(builder: (context) => const HomePage()),
       );
       print('Login successful!');
     } on FirebaseAuthException catch (e) {

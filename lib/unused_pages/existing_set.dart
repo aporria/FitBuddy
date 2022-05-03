@@ -1,6 +1,5 @@
-import 'package:fit_buddy/exercise_set_screens/start_set.dart';
+import 'package:fit_buddy/unused_pages/start_set.dart';
 import 'package:flutter/material.dart';
-import 'add_new_exercise.dart';
 
 class ExistingSets extends StatefulWidget {
   const ExistingSets({Key? key, required this.title}) : super(key: key);
@@ -75,10 +74,7 @@ class _ExistingSetsState extends State<ExistingSets> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const AddNewExercise()),
-          );
+
         },
         child: const Icon(Icons.add),
       ),

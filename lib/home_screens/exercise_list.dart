@@ -2,12 +2,11 @@ import 'dart:convert';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:fit_buddy/exercise_set_screens/add_new_routine.dart';
-import 'package:fit_buddy/exercise_set_screens/routine_details.dart';
+import 'package:fit_buddy/exercise_set_screens/userprofile.dart';
 import 'package:flutter/material.dart';
 
 import '../exercise_set_screens/add_new_exercise.dart';
-import '../options_screens/options_page.dart';
+import '../options_screens/exercise_list_options.dart';
 
 class ExerciseList extends StatefulWidget {
   const ExerciseList({Key? key}) : super(key: key);
@@ -42,7 +41,7 @@ class _ExerciseListState extends State<ExerciseList> {
   }
 
   void refreshExerciseList() {
-    FirebaseDatabase.instance.ref().child(userID.toString() + '/exercise_list').once()
+    FirebaseDatabase.instance.ref().child(userID.toString() + '/exercise_list').orderByKey().once()
       .then((datasnapshot) {
         print('Successfully loaded the data!');
         if (currentUser != null) {
@@ -61,9 +60,9 @@ class _ExerciseListState extends State<ExerciseList> {
           print(value);
           exerciseListTmp.add(value);
           exerciseList = exerciseListTmp;
-          setState(() {
+        });
+        setState(() {
 
-          });
         });
         print("Final Exercise List: ");
         print(exerciseListTmp);
@@ -77,34 +76,22 @@ class _ExerciseListState extends State<ExerciseList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         centerTitle: true,
         title: const Text('FitBuddy'),
-        automaticallyImplyLeading: false,
-        actions: <Widget>[
-          IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const OptionsPage()),
-              );
-            },
-            icon: const Icon(Icons.more_vert_rounded),
-          ),
-        ],
       ),
-      backgroundColor: const Color(0xFFF6F6F6),
+      backgroundColor: Colors.lightBlue.shade50,
       body: Column(
         children: [
           Container(
+            margin: const EdgeInsets.only(bottom: 10),
             width: double.infinity,
-            //margin: const EdgeInsets.only(top: 5, bottom: 5, left: 20, right: 20),
             padding: const EdgeInsets.symmetric(
               vertical: 32.0,
               horizontal: 24.0,
             ),
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20.0)
+            decoration: const BoxDecoration(
+                color: Colors.white
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -119,10 +106,12 @@ class _ExerciseListState extends State<ExerciseList> {
                 ),
                 Padding(
                   padding: EdgeInsets.only(
-                    top: 10.0,
+                    top: 5.0,
                   ),
                   child: Text(
-                    "Welcome to FitBuddy! Add exercises and track your progress!",
+                    "Welcome to FitBuddy! Add exercises and track your progress, "
+                        "time yourself with the stopwatch, or if you're indecisive,"
+                        " choose an exercise at random with the randomizer!",
                     style: TextStyle(
                         fontSize: 16.0,
                         color: Color(0xFF86829D),
@@ -140,7 +129,6 @@ class _ExerciseListState extends State<ExerciseList> {
                 return ListTile(
                   onTap: () {
                     print("The item is clicked");
-
                   },
                   title: Container(
                     width: double.infinity,

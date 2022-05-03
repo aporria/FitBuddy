@@ -21,10 +21,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
+        colorScheme: ColorScheme.fromSwatch(
+          primarySwatch: Colors.purple,
+        ),
         textTheme: GoogleFonts.nunitoSansTextTheme(
           Theme.of(context).textTheme,
-        )
+        ),
+        scaffoldBackgroundColor: Colors.deepPurple.shade50,
       ),
       home: const SplashPage(title: 'FitBuddy'),
     );
@@ -61,16 +64,26 @@ class _SplashPageState extends State<SplashPage> {
               ),
             ),
             ElevatedButton(
-                style: style,
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      settings: const RouteSettings(name: '/login'),
-                      builder: (context) => const LoginPage()),
-                  );
-                },
-                child: const Text('Start'),
+              style: ElevatedButton.styleFrom(
+                //minimumSize: const Size.fromHeight(40),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(14),
+                ),
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    settings: const RouteSettings(name: '/login'),
+                    builder: (context) => const LoginPage()),
+                );
+              },
+              child: const Text(
+                  'Start',
+                style: TextStyle(
+                  fontSize: 20
+                ),
+              ),
             ),
           ],
         ),

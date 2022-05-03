@@ -22,14 +22,12 @@ class _AddNewExerciseState extends State<AddNewExercise> {
   var currentUser = FirebaseAuth.instance.currentUser;
   var userID = FirebaseAuth.instance.currentUser?.uid;
 
+
   @override
   Widget build(BuildContext context) {
-    final ButtonStyle style =
-    ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
-
     return Scaffold(
       appBar: AppBar(
-        title: const Text('New Exercise'),
+        title: const Text('Add New Exercise'),
         centerTitle: true,
       ),
       body: Center(
@@ -43,8 +41,10 @@ class _AddNewExerciseState extends State<AddNewExercise> {
                 child: TextFormField(
                   controller: nameController,
                   obscureText: false,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(14),
+                    ),
                     labelText: 'Name of exercise',
                     hintText: 'What do you want to call this exercise?'
                   ),
@@ -61,8 +61,10 @@ class _AddNewExerciseState extends State<AddNewExercise> {
                 child: TextFormField(
                   controller: categoryController,
                   obscureText: false,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(14),
+                    ),
                     labelText: 'Category',
                     hintText: '(e.g., legs, chest, back, etc.)'
                   ),
@@ -79,8 +81,10 @@ class _AddNewExerciseState extends State<AddNewExercise> {
                 child: TextFormField(
                   controller: numberOfSetsController,
                   obscureText: false,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(14),
+                    ),
                     labelText: 'Number of sets',
                   ),
                   validator: (String? value) {
@@ -100,8 +104,10 @@ class _AddNewExerciseState extends State<AddNewExercise> {
                 child: TextFormField(
                   controller: numberOfRepsController,
                   obscureText: false,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(14),
+                    ),
                     labelText: 'Number of reps',
                   ),
                   validator: (String? value) {
@@ -129,12 +135,14 @@ class _AddNewExerciseState extends State<AddNewExercise> {
             print(numberOfRepsController.text);
 
             var timeStamp = DateTime.now().millisecondsSinceEpoch;
+            var uid = ('exercise' + timeStamp.toString());
             FirebaseDatabase.instance.ref().child(userID.toString() + '/exercise_list/exercise' + timeStamp.toString()).set(
               {
                 "name" : nameController.text.trim(),
                 "category" : categoryController.text.trim(),
                 "numSets" : numberOfSetsController.text.trim(),
                 "numReps" : numberOfRepsController.text.trim(),
+                "uid" : getUID(),
               }
             ).then((value) {
               print("Successfully added new exercise!");
@@ -151,11 +159,28 @@ class _AddNewExerciseState extends State<AddNewExercise> {
             Navigator.pop(context);
           }
         },
-        label: const Text('Finish'),
-        icon: const Icon(
-            Icons.thumb_up_rounded
+        label: Row(
+          children: const [
+            Text('Confirm'),
+            SizedBox(
+              width: 10,
+            ),
+            Icon(
+              Icons.thumb_up_rounded,
+              size: 24.0,
+            ),
+          ],
         ),
+        icon: Container(),
       ),
     );
+  }
+  String getUID() {
+    var timeStamp = DateTime.now().millisecondsSinceEpoch;
+    var uid = ('exercise' + timeStamp.toString());
+    return uid;
+  }
+  String getName() {
+    return nameController.text;
   }
 }

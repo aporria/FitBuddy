@@ -1,5 +1,4 @@
 import 'package:firebase_database/firebase_database.dart';
-import 'package:fit_buddy/exercise_set_screens/existing_set.dart';
 import 'package:flutter/material.dart';
 
 import 'new_routine_page.dart';
