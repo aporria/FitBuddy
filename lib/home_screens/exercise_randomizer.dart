@@ -86,53 +86,52 @@ class _RandomizerState extends State<Randomizer> {
         centerTitle: true,
         automaticallyImplyLeading: false,
       ),
-      body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              margin: const EdgeInsets.only(bottom: 10),
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(
-                vertical: 24.0,
-                horizontal: 24.0,
-              ),
-              decoration: const BoxDecoration(
-                  color: Colors.white
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text(
-                    "Random Exercise Generator",
+      body: Column(
+        children: [
+          Container(
+            //margin: const EdgeInsets.only(bottom: 10),
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(
+              vertical: 24.0,
+              horizontal: 24.0,
+            ),
+            decoration: const BoxDecoration(
+                color: Colors.white
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const [
+                Text(
+                  "Exercise Randomizer!",
+                  style: TextStyle(
+                    fontSize: 30.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                    top: 5.0,
+                  ),
+                  child: Text(
+                    'Scroll and choose a category below and a random exercise from that '
+                        'category will be generated!',
                     style: TextStyle(
-                      fontSize: 25.0,
-                      fontWeight: FontWeight.bold,
+                        fontSize: 16.0,
+                        height: 1.5
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                      top: 5.0,
-                    ),
-                    child: Text(
-                      'Choose a category below and a random exercise from that '
-                          'category will be generated!',
-                      style: TextStyle(
-                          fontSize: 16.0,
-                          height: 1.5
-                      ),
-                    ),
-                  )
-                ],
-              ),
+                )
+              ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+          ),
+          Expanded(
+            child: ListView(
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              padding: const EdgeInsets.all(10),
+              children: <Widget>[
                 Container(
-                  margin: const EdgeInsets.only(left: 30, top: 10),
-                  height: 75,
-                  width: 150,
+                  margin: const EdgeInsets.only(top: 10),
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       minimumSize: const Size.fromHeight(45),
@@ -155,13 +154,8 @@ class _RandomizerState extends State<Randomizer> {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  width: 20,
-                ),
                 Container(
-                  margin: const EdgeInsets.only(right: 30, top: 10),
-                  height: 75,
-                  width: 150,
+                  margin: const EdgeInsets.only(top: 10),
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       minimumSize: const Size.fromHeight(45),
@@ -184,12 +178,224 @@ class _RandomizerState extends State<Randomizer> {
                     ),
                   ),
                 ),
+                Container(
+                  margin: const EdgeInsets.only(top: 10),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: const Size.fromHeight(45),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                    ),
+                    onPressed: () {
+                      exercise = backExercises[_random.nextInt(backExercises.length)];
+                      setState(() {
+
+                      });
+                    },
+                    child: const Text(
+                      'Back',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(top: 10),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: const Size.fromHeight(45),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                    ),
+                    onPressed: () {
+                      exercise = shoulderExercises[_random.nextInt(shoulderExercises.length)];
+                      setState(() {
+
+                      });
+                    },
+                    child: const Text(
+                      'Shoulders',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(top: 10),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: const Size.fromHeight(45),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                    ),
+                    onPressed: () {
+                      exercise = bicepExercises[_random.nextInt(bicepExercises.length)];
+                      setState(() {
+
+                      });
+                    },
+                    child: const Text(
+                      'Biceps',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(top: 10),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: const Size.fromHeight(45),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                    ),
+                    onPressed: () {
+                      exercise = tricepExercises[_random.nextInt(tricepExercises.length)];
+                      setState(() {
+
+                      });
+                    },
+                    child: const Text(
+                      'Triceps',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(top: 10),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: const Size.fromHeight(45),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                    ),
+                    onPressed: () {
+                      exercise = waistExercises[_random.nextInt(waistExercises.length)];
+                      setState(() {
+
+                      });
+                    },
+                    child: const Text(
+                      'Waist',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
+          ),
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(
+              vertical: 10.0,
+              horizontal: 10.0,
+            ),
+            decoration: const BoxDecoration(
+                color: Colors.white
+            ),
+            child: Align(
+              alignment: Alignment.center,
+              child: Text(
+                exercise,
+                style: TextStyle(
+                  fontSize: 30.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+
+          /*
+          Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 30, top: 10),
+                      height: 75,
+                      width: 150,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: const Size.fromHeight(45),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14),
+                          ),
+                        ),
+                        onPressed: () {
+                          exercise = chestExercises[_random.nextInt(chestExercises.length)];
+                          setState(() {
+
+                          });
+                        },
+                        child: const Text(
+                          'Chest',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: Container(
+                      margin: const EdgeInsets.only(right: 30, top: 10),
+                      height: 75,
+                      width: 150,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: const Size.fromHeight(45),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14),
+                          ),
+                        ),
+                        onPressed: () {
+                          exercise = legExercises[_random.nextInt(legExercises.length)];
+                          setState(() {
+
+                          });
+                        },
+                        child: const Text(
+                          'Legs',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                child: Container(
                   margin: const EdgeInsets.only(left: 30, top: 20),
                   height: 75,
                   width: 150,
@@ -215,10 +421,12 @@ class _RandomizerState extends State<Randomizer> {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  width: 20,
-                ),
-                Container(
+              ),
+              const SizedBox(
+                width: 20,
+              ),
+              Expanded(
+                child: Container(
                   margin: const EdgeInsets.only(right: 30, top: 20),
                   height: 75,
                   width: 150,
@@ -244,12 +452,14 @@ class _RandomizerState extends State<Randomizer> {
                     ),
                   ),
                 ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                child: Container(
                   margin: const EdgeInsets.only(left: 30, top: 20),
                   height: 75,
                   width: 150,
@@ -275,10 +485,12 @@ class _RandomizerState extends State<Randomizer> {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  width: 20,
-                ),
-                Container(
+              ),
+              const SizedBox(
+                width: 20,
+              ),
+              Expanded(
+                child: Container(
                   margin: const EdgeInsets.only(right: 30, top: 20),
                   height: 75,
                   width: 150,
@@ -304,9 +516,11 @@ class _RandomizerState extends State<Randomizer> {
                     ),
                   ),
                 ),
-              ],
-            ),
-            Container(
+              ),
+            ],
+          ),
+          Expanded(
+            child: Container(
               margin: const EdgeInsets.only(top: 20),
               height: 75,
               width: 150,
@@ -332,23 +546,18 @@ class _RandomizerState extends State<Randomizer> {
                 ),
               ),
             ),
-            Expanded(
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: Container(
-                  margin: const EdgeInsets.only(bottom: 50),
-                  child: Text(
-                    exercise,
-                    style: const TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold
-                    ),
-                  ),
-                ),
+          ),
+          FittedBox(
+            child: Text(
+              'test',
+              style: TextStyle(
+                fontSize: 30.0,
+                fontWeight: FontWeight.bold,
               ),
             ),
-          ],
-        ),
+          ),
+          */
+        ],
       ),
     );
   }

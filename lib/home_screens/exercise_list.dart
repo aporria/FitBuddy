@@ -83,7 +83,7 @@ class _ExerciseListState extends State<ExerciseList> {
             margin: const EdgeInsets.only(bottom: 10),
             width: double.infinity,
             padding: const EdgeInsets.symmetric(
-              vertical: 32.0,
+              vertical: 24.0,
               horizontal: 24.0,
             ),
             decoration: const BoxDecoration(
@@ -128,7 +128,7 @@ class _ExerciseListState extends State<ExerciseList> {
                     width: double.infinity,
                     //margin: const EdgeInsets.only(top: 5, bottom: 5, left: 20, right: 20),
                     padding: const EdgeInsets.symmetric(
-                      vertical: 32.0,
+                      vertical: 12.0,
                       horizontal: 24.0,
                     ),
                     decoration: BoxDecoration(
